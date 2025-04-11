@@ -22,12 +22,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-a4nz*vs2ix7ea^993f@xeah2q+-1slkqgwg1uchowd5y$h2u^-'
+SECRET_KEY = os.envrin.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.environ.get("DEBUG","False").lower()=="True"
 
-ALLOWED_HOSTS = ['127.0.0.1','vercel.app','localhost','.vercel.app']
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
 
 
 # Application definition
@@ -82,8 +82,8 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
-DATABASES['default'] = dj_database_url.parse('postgresql://requirements_qc5x_user:EoEg0KfYm71l9DZG8g3fUt3HMSMfX2UH@dpg-cvrq952li9vc739lod80-a.oregon-postgres.render.com/requirements_qc5x')
+database_url=os.environ.get("DATABASE_URL")
+DATABASES['default'] = dj_database_url.parse(database_url)
 
 
 # Password validation
