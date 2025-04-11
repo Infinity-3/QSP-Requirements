@@ -3,8 +3,7 @@
     "builds":[
         {
             "src":"qspiders/wsgi.py",
-            "use":"@vercel/python",
-            "runtime": "python3.11"
+            "use":"@vercel/python"
         }
     ],
     "routes":[
