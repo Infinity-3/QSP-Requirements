@@ -13,7 +13,7 @@ ALLOWED_USERS = ['admin_hr', 'hr_mysore']  #if we need then we can add userrname
 
 
 def index(request):
-    Requirements.objects.filter(created_at__lt=now().date()-timedelta(days=31)).delete() #clean up old requirements
+    # Requirements.objects.filter(created_at__lt=now().date()-timedelta(days=31)).delete() #clean up old requirements
     today = now().date()
     yesterday = today - timedelta(days=1)
     last_week = today - timedelta(days=7)
