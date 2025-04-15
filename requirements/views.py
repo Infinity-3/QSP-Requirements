@@ -21,6 +21,7 @@ def index(request):
 
     date_filter = request.GET.get('date')
     requirements = Requirements.objects.all()
+    schedule = Schedule.objects.all()
 
     if date_filter == "today":
         requirements = requirements.filter(created_at__date=today)
@@ -40,6 +41,7 @@ def index(request):
 
     return render(request, 'index.html', {
     'requirements': requirements,
+    'schedule': schedule,
     'active_filter': date_filter,
     'title': 'Hiring Dashboard',
 })
@@ -189,7 +191,7 @@ def add_schedule(request):
 
    return render(request, 'add_schedule.html', {'form': form,'title':'Add Scheduled Students'})
 
-   
+
 def schedule(request):
     scheduleinfo=Schedule.objects.all() 
     sname=None
@@ -201,7 +203,7 @@ def schedule(request):
             'updated':None,
             'sname':sname 
     }
-    return render(request,'schedules.html',context)
+    return render(request,'schedule.html',context)
     
 
 # def update_schedule(request,id):
